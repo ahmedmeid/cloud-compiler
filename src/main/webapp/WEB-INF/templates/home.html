@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="description" content="Cloud Compiler Home" />
+<meta name="author" content="Ahmed Eid" />
+<title>Java Cloud Compiler</title>
+<link href="../../resources/css/bootstrap.min.css"
+	th:href="@{/resources/css/bootstrap.min.css}" rel="stylesheet" />
+<link href="../../resources/css/input-file.css"
+	th:href="@{/resources/css/iput-file.css}" rel="stylesheet" />
+</head>
+<body>
+	<div class="container">
+	    <form th:action="@{/logout}" method="post">
+			<input class="btn btn-primary" type="submit" value="Sign Out" />
+		</form>
+		<h1 th:inline="text">Welcome
+			[[${#httpServletRequest.remoteUser}]] to online java applications
+			compiler</h1>
+		<form method="POST" enctype="multipart/form-data" action="/upload">
+		<span class="btn btn-default btn-file">
+		   <input type="file" name="file"/>
+		</span>
+		 <br /> 
+		 <br /> <input type="submit" value="Upload" class="btn btn-primary"/> Click here to upload the source code!
+		</form>
+		<br />
+		<p th:text="${project_type}" />
+		<br />
+		<p th:text="${result}" />
+		<br />
+		<a th:href="@{|/files/download?filename=${filename}|}"><span
+			th:text="${filename}"></span></a>
+	</div>
+	
+	<script type="text/javascript"
+	src="../../resources/js/bootstrap-filestyle.min.js"
+	th:src="@{/resources/js/bootstrap-filestyle.min.js}">	
+   </script>
+   <script type="text/javascript" src="../../resources/js/bootstrap.min.js"
+	th:src="@{@{/resources/js/bootstrap.min.js}}">
+   </script>
+   <script type="text/javascript" src="../../resources/js/jquery.min.js"
+	th:src="@{/resources/js/jquery.min.js}">
+	
+</script>
+	
+</body>
+</html>
